@@ -5,7 +5,7 @@ import { SimpleIcon } from '../../../types';
 function BannerCard({ title, hex, slug }: SimpleIcon) {
   const logoColor = getConstratColor(hex);
   return (
-    <li className="">
+    <li className="border-secondary rounded-xl border p-4">
       <div className="relative h-7 min-w-[200px]">
         <Image
           objectFit="contain"
