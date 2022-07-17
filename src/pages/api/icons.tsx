@@ -31,7 +31,7 @@ const getIconsByPageHandler = (
 
       const requestedPage = list[queryPage];
 
-      res.status(200).json({ icons: requestedPage });
+      return res.status(200).json({ icons: requestedPage });
     }
 
     throw new Error('Page and limit must be numbers');
