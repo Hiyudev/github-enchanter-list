@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from 'next/types';
+import Navbar from '../components/common/Navbar';
 import Layout from '../components/layout';
 import BannerList from '../components/sections/Banner';
 import { getIcons } from '../lib/simpleIcons';
@@ -10,9 +11,12 @@ interface IHomePageProps {
 
 const HomePage: NextPage = ({ icons }: IHomePageProps) => {
   return (
-    <Layout>
-      <BannerList icons={icons} />
-    </Layout>
+    <>
+      <Navbar />
+      <Layout className="mt-20">
+        <BannerList icons={icons} />
+      </Layout>
+    </>
   );
 };
 
