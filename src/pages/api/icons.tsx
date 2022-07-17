@@ -2,9 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { getIcons } from '../../lib/simpleIcons';
 import { SimpleIcon } from '../../types';
 
-type Data = {
-  icons: SimpleIcon[];
-};
+type Data = SimpleIcon[];
 
 type ErrorResponse = {
   message: string;
@@ -31,7 +29,7 @@ const getIconsByPageHandler = (
 
       const requestedPage = list[queryPage];
 
-      return res.status(200).json({ icons: requestedPage });
+      return res.status(200).json(requestedPage);
     }
 
     throw new Error('Page and limit must be numbers');
