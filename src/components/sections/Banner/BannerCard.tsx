@@ -18,4 +18,14 @@ function BannerCard({ title, hex, slug }: SimpleIcon) {
   );
 }
 
+export function BannerCardSkeleton() {
+  return (
+    <li className="border-secondary rounded-xl border p-4">
+      <div className="relative h-7 min-w-[200px]">
+        <div className="bg-secondary h-full w-full animate-pulse rounded-full" />
+      </div>
+    </li>
+  );
+}
+
 export default BannerCard;

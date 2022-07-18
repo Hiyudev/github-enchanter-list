@@ -1,6 +1,6 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useSWRInfinite from 'swr/infinite';
-import BannerCard from './BannerCard';
+import BannerCard, { BannerCardSkeleton } from './BannerCard';
 
 function BannerList() {
   const itemsQuantity = 36;
@@ -20,7 +20,15 @@ function BannerList() {
       dataLength={data.length}
       next={() => setSize(size + itemsQuantity)}
       hasMore={true}
-      loader={<div>Loading</div>}
+      loader={
+        <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {Array(itemsQuantity)
+            .fill(1)
+            .map((_, index) => {
+              return <BannerCardSkeleton key={index} />;
+            })}
+        </ul>
+      }
     >
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {data.map((icons, index) => {
