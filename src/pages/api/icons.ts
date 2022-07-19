@@ -27,7 +27,7 @@ const getIconsByPageHandler = (
       let iconsList: SimpleIcon[] = icons;
 
       if (querySearch) {
-        iconsList = fuzzysort.go(querySearch, icons, { key: ['title', 'slug'] }).map((icon) => icon.obj);
+        iconsList = fuzzysort.go(querySearch, icons, { keys: ['title', 'slug'] }).map((icon) => icon.obj);
       }
 
       while (iconsList.length > 0) {
