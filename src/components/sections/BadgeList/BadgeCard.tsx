@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { SimpleIcon } from '../../../types';
 import { generateBadgeURL } from '../../../utils/badge';
 
-function BannerCard({ title, hex, slug }: SimpleIcon) {
+function BadgeCard({ title, hex, slug }: SimpleIcon) {
   return (
     <li className="border-secondary rounded-xl border p-4">
       <div className="relative h-7 min-w-[200px]">
@@ -17,7 +17,7 @@ function BannerCard({ title, hex, slug }: SimpleIcon) {
   );
 }
 
-export function BannerCardSkeleton() {
+export function BadgeCardSkeleton() {
   return (
     <li className="border-secondary rounded-xl border p-4">
       <div className="relative h-7 min-w-[200px]">
@@ -27,4 +27,4 @@ export function BannerCardSkeleton() {
   );
 }
 
-export default BannerCard;
+export default BadgeCard;

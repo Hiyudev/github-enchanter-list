@@ -1,14 +1,14 @@
 import { NextPage } from 'next/types';
 import Navbar from '../components/common/Navbar';
 import Layout from '../components/layout';
-import BannerList from '../components/sections/Banner';
+import BadgeList from '../components/sections/BadgeList';
 
 const HomePage: NextPage = () => {
   return (
     <>
       <Navbar />
       <Layout className="mt-20">
-        <BannerList />
+        <BadgeList />
       </Layout>
     </>
   );

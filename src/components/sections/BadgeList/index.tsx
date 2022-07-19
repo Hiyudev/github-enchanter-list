@@ -1,8 +1,8 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useSWRInfinite from 'swr/infinite';
-import BannerCard, { BannerCardSkeleton } from './BannerCard';
+import BadgeCard, { BadgeCardSkeleton } from './BadgeCard';
 
-function BannerList() {
+function BadgeList() {
   const itemsQuantity = 36;
 
   const getIcons = (pageIndex, previousPageData) => {
@@ -25,18 +25,18 @@ function BannerList() {
           {Array(itemsQuantity)
             .fill(1)
             .map((_, index) => {
-              return <BannerCardSkeleton key={index} />;
+              return <BadgeCardSkeleton key={index} />;
             })}
         </ul>
       }
     >
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {data.map((icons) => {
-          return icons.map((icon) => <BannerCard {...icon} key={icon.slug} />);
+          return icons.map((icon) => <BadgeCard {...icon} key={icon.slug} />);
         })}
       </ul>
     </InfiniteScroll>
   );
 }
 
-export default BannerList;
+export default BadgeList;
