@@ -10,6 +10,7 @@
   "dependencies": {
     "babel-plugin-superjson-next": "^0.4.3",
     "contrast": "^1.0.1",
+    "fuzzysort": "^2.0.1",
     "next": "latest",
     "next-themes": "^0.2.0",
     "phosphor-react": "^1.4.1",

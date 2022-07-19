@@ -1,3 +1,4 @@
+import fuzzysort from 'fuzzysort';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getIcons } from '../../lib/simpleIcons';
 import { SimpleIcon } from '../../types';
@@ -12,8 +13,7 @@ const getIconsByPageHandler = (
   req: NextApiRequest,
   res: NextApiResponse<Data | ErrorResponse>
 ) => {
-  const { query } = req;
-  const { page, limit } = query;
+  const { page, limit, search } = req.query;
 
   const icons = getIcons();
   const list: SimpleIcon[][] = [];
@@ -21,9 +21,13 @@ const getIconsByPageHandler = (
   try {
     const queryPage = Number(page);
     const queryLimit = Number(limit);
-    if (!isNaN(queryPage) && !isNaN(queryLimit)) {
-      while (icons.length > 0) {
-        const chunk = icons.splice(0, queryLimit);
+    const querySearch = Array.isArray(search) ? search.join(" ") : search;
+
+    if (!isNaN(queryPage) && !isNaN(queryLimit) && querySearch.length > 0) {
+      const iconsList = fuzzysort.go('mr', icons, { key: ['title', 'slug'] }).map((icon) => icon.obj);
+
+      while (iconsList.length > 0) {
+        const chunk = iconsList.splice(0, queryLimit);
         list.push(chunk);
       }
 
