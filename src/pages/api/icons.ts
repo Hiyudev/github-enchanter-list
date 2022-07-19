@@ -23,8 +23,12 @@ const getIconsByPageHandler = (
     const queryLimit = Number(limit);
     const querySearch = Array.isArray(search) ? search.join(" ") : search;
 
-    if (!isNaN(queryPage) && !isNaN(queryLimit) && querySearch.length > 0) {
-      const iconsList = fuzzysort.go('mr', icons, { key: ['title', 'slug'] }).map((icon) => icon.obj);
+    if (!isNaN(queryPage) && !isNaN(queryLimit)) {
+      let iconsList: SimpleIcon[] = icons;
+
+      if (querySearch) {
+        iconsList = fuzzysort.go(querySearch, icons, { key: ['title', 'slug'] }).map((icon) => icon.obj);
+      }
 
       while (iconsList.length > 0) {
         const chunk = iconsList.splice(0, queryLimit);
