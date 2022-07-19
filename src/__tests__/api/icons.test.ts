@@ -8,7 +8,7 @@ describe("API Route: /api/icons", () => {
       const { req, res } = createMocks({
         method: 'GET',
         query: {
-          page: 1,
+          page: 0,
           limit: 12
         },
       });
@@ -24,7 +24,7 @@ describe("API Route: /api/icons", () => {
       const { req, res } = createMocks({
         method: 'GET',
         query: {
-          page: 1,
+          page: 0,
           limit: 36
         },
       });
@@ -40,7 +40,7 @@ describe("API Route: /api/icons", () => {
       const { req: firstReq, res: firstRes } = createMocks({
         method: 'GET',
         query: {
-          page: 1,
+          page: 0,
           limit: 12
         },
       });
@@ -54,7 +54,7 @@ describe("API Route: /api/icons", () => {
       const { req: secondReq, res: secondRes } = createMocks({
         method: 'GET',
         query: {
-          page: 2,
+          page: 1,
           limit: 12
         },
       });
@@ -74,7 +74,7 @@ describe("API Route: /api/icons", () => {
       const { req, res } = createMocks({
         method: 'GET',
         query: {
-          page: 1,
+          page: 0,
           limit: 12,
           search: 'jest'
         },
@@ -94,7 +94,7 @@ describe("API Route: /api/icons", () => {
       const { req, res } = createMocks({
         method: 'GET',
         query: {
-          page: 1,
+          page: 0,
           limit: 6,
           search: 'react'
         },
