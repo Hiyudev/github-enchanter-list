@@ -18,7 +18,7 @@ function BannerList() {
   return (
     <InfiniteScroll
       dataLength={data.length}
-      next={() => setSize(size + itemsQuantity)}
+      next={() => setSize(size + 1)}
       hasMore={true}
       loader={
         <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -31,7 +31,7 @@ function BannerList() {
       }
     >
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {data.map((icons, index) => {
+        {data.map((icons) => {
           return icons.map((icon) => <BannerCard {...icon} key={icon.slug} />);
         })}
       </ul>
