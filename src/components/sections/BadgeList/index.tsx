@@ -13,7 +13,16 @@ function BadgeList() {
   const fetcher = (url) => fetch(url).then((res) => res.json());
 
   const { data, size, setSize } = useSWRInfinite(getIcons, fetcher);
-  if (!data) return <div>Loading...</div>;
+  if (!data)
+    return (
+      <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {Array(itemsQuantity)
+          .fill(1)
+          .map((_, index) => {
+            return <BadgeCardSkeleton key={index} />;
+          })}
+      </ul>
+    );
 
   return (
     <InfiniteScroll
