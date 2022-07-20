@@ -13,3 +13,8 @@ export interface SimpleIcon {
   }
   | undefined;
 }
+
+export type Badge = {
+  url: string;
+  name: string;
+}
