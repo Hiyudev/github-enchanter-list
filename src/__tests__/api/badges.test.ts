@@ -1,5 +1,5 @@
 import { createMocks } from 'node-mocks-http';
-import getIconsByPageHandler from "../../pages/api/icons";
+import getBadgesHandler from "../../pages/api/badges";
 import { SimpleIcon } from '../../types';
 
 describe("API Route: /api/icons", () => {
@@ -13,7 +13,7 @@ describe("API Route: /api/icons", () => {
         },
       });
 
-      await getIconsByPageHandler(req, res);
+      await getBadgesHandler(req, res);
       const data = JSON.parse(res._getData());
 
       expect(res._getStatusCode()).toBe(200);
@@ -29,7 +29,7 @@ describe("API Route: /api/icons", () => {
         },
       });
 
-      await getIconsByPageHandler(req, res);
+      await getBadgesHandler(req, res);
       const data = JSON.parse(res._getData());
 
       expect(res._getStatusCode()).toBe(200);
@@ -45,7 +45,7 @@ describe("API Route: /api/icons", () => {
         },
       });
 
-      await getIconsByPageHandler(firstReq, firstRes);
+      await getBadgesHandler(firstReq, firstRes);
       const firstFetchData = JSON.parse(firstRes._getData());
 
       expect(firstRes._getStatusCode()).toBe(200);
@@ -59,7 +59,7 @@ describe("API Route: /api/icons", () => {
         },
       });
 
-      await getIconsByPageHandler(secondReq, secondRes);
+      await getBadgesHandler(secondReq, secondRes);
       const secondFetchData = JSON.parse(secondRes._getData());
 
       expect(secondRes._getStatusCode()).toBe(200);
@@ -80,7 +80,7 @@ describe("API Route: /api/icons", () => {
         },
       });
 
-      await getIconsByPageHandler(req, res);
+      await getBadgesHandler(req, res);
       const data: SimpleIcon[] = JSON.parse(res._getData());
 
       const sampleData: SimpleIcon = data[0];
@@ -100,7 +100,7 @@ describe("API Route: /api/icons", () => {
         },
       });
 
-      await getIconsByPageHandler(req, res);
+      await getBadgesHandler(req, res);
       const data: SimpleIcon[] = JSON.parse(res._getData());
 
       expect(res._getStatusCode()).toBe(200);

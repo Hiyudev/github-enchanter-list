@@ -9,7 +9,7 @@ type ErrorResponse = {
   message: string;
 };
 
-const getIconsByPageHandler = (
+const getBadgesHandler = (
   req: NextApiRequest,
   res: NextApiResponse<Data | ErrorResponse>
 ) => {
@@ -46,4 +46,4 @@ const getIconsByPageHandler = (
   }
 };
 
-export default getIconsByPageHandler;
+export default getBadgesHandler;
