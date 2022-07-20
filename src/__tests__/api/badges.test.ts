@@ -1,6 +1,6 @@
 import { createMocks } from 'node-mocks-http';
+import { Badge } from '../../@types';
 import getBadgesHandler from "../../pages/api/badges";
-import { SimpleIcon } from '../../@types';
 
 describe("API Route: /api/icons", () => {
   describe("Testing paginations and limits", () => {
@@ -76,18 +76,19 @@ describe("API Route: /api/icons", () => {
         query: {
           page: 0,
           limit: 12,
-          search: 'jest'
+          search: 'jest',
+          style: 'for-the-badge'
         },
       });
 
       await getBadgesHandler(req, res);
-      const data: SimpleIcon[] = JSON.parse(res._getData());
+      const urls: Badge[] = JSON.parse(res._getData());
 
-      const sampleData: SimpleIcon = data[0];
+      const sampleBadge: Badge = urls[0];
       expect(res._getStatusCode()).toBe(200);
 
-      expect(sampleData.title).toBe('Jest');
-      expect(sampleData.slug).toBe('jest');
+      expect(sampleBadge.name).toBe('Jest');
+      expect(sampleBadge.url).toBe('https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white');
     })
 
     it("should get a couple of similar items", async () => {
@@ -101,13 +102,12 @@ describe("API Route: /api/icons", () => {
       });
 
       await getBadgesHandler(req, res);
-      const data: SimpleIcon[] = JSON.parse(res._getData());
+      const badges: Badge[] = JSON.parse(res._getData());
 
       expect(res._getStatusCode()).toBe(200);
 
-      data.forEach(icon => {
-        expect(icon.title).toMatch(/react/i);
-        expect(icon.slug).toMatch(/react/i);
+      badges.forEach(badge => {
+        expect(badge.name).toMatch(/react/i);
       });
     })
   })
