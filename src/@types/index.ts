@@ -18,3 +18,10 @@ export type Badge = {
   url: string;
   name: string;
 }
+
+export type Option = {
+  icon?: React.ReactNode;
+  label: string;
+  value: string;
+  defaultSelected?: boolean;
+};
