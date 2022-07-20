@@ -1,16 +1,18 @@
 import Image from 'next/image';
-import { SimpleIcon } from '../../../@types';
-import { generateBadgeURL } from '../../../utils/badge';
+import { ComponentProps } from 'react';
+import { Badge } from '../../../@types';
 
-function BadgeCard({ title, hex, slug }: SimpleIcon) {
+type BadgeCardProps = Badge & ComponentProps<'li'>;
+
+function BadgeCard({ name, url, ...props }: BadgeCardProps) {
   return (
-    <li className="border-secondary rounded-xl border p-4">
+    <li className="border-secondary rounded-xl border p-4" {...props}>
       <div className="relative h-7 min-w-[200px]">
         <Image
           objectFit="contain"
           layout="fill"
-          alt={`${title} banner`}
-          src={generateBadgeURL(title, hex, slug)}
+          alt={`${name} badge`}
+          src={url}
         />
       </div>
     </li>

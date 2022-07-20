@@ -7,7 +7,7 @@ function BadgeList() {
 
   const getIcons = (pageIndex, previousPageData) => {
     if (previousPageData && !previousPageData.length) return null;
-    return `/api/icons?page=${pageIndex}&limit=${itemsQuantity}`;
+    return `/api/badges?page=${pageIndex}&limit=${itemsQuantity}`;
   };
 
   const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -40,8 +40,10 @@ function BadgeList() {
       }
     >
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {data.map((icons) => {
-          return icons.map((icon) => <BadgeCard {...icon} key={icon.slug} />);
+        {data.map((badges, index) => {
+          return badges.map((badge) => (
+            <BadgeCard {...badge} key={badge.name} />
+          ));
         })}
       </ul>
     </InfiniteScroll>
