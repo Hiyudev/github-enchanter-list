@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { SimpleIcon } from '../../../types';
+import { SimpleIcon } from '../../../@types';
 import { generateBadgeURL } from '../../../utils/badge';
 
 function BadgeCard({ title, hex, slug }: SimpleIcon) {

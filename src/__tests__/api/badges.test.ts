@@ -1,6 +1,6 @@
 import { createMocks } from 'node-mocks-http';
 import getBadgesHandler from "../../pages/api/badges";
-import { SimpleIcon } from '../../types';
+import { SimpleIcon } from '../../@types';
 
 describe("API Route: /api/icons", () => {
   describe("Testing paginations and limits", () => {

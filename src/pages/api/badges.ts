@@ -1,7 +1,7 @@
 import fuzzysort from 'fuzzysort';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getIcons } from '../../lib/simpleIcons';
-import { SimpleIcon } from '../../types';
+import { SimpleIcon } from '../../@types';
 
 type Data = SimpleIcon[];
 
