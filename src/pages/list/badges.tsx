@@ -1,16 +1,9 @@
 import type { NextPage } from 'next';
-import { MagnifyingGlass } from 'phosphor-react';
-import { FormEvent } from 'react';
-import { Input } from '../../components/common/Input';
 import Navbar from '../../components/common/Navbar';
 import Layout from '../../components/layout';
 import BadgeList from '../../components/sections/BadgeList';
 
 const BadgesPage: NextPage = () => {
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-  };
-
   return (
     <>
       <Navbar />
@@ -25,13 +18,6 @@ const BadgesPage: NextPage = () => {
             eiusmod tempor incididunt
           </p>
         </section>
-
-        <form onSubmit={handleSubmit}>
-          <Input
-            icon={<MagnifyingGlass weight="bold" />}
-            placeholder="Search..."
-          />
-        </form>
 
         <BadgeList />
       </Layout>

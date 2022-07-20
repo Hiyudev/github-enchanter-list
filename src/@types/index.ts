@@ -25,3 +25,5 @@ export type Option = {
   value: string;
   defaultSelected?: boolean;
 };
+
+export type BadgeStyles = 'plastic' | 'flat' | 'flat-square' | 'for-the-badge' | 'social';

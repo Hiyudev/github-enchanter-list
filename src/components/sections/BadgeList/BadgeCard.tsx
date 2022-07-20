@@ -1,30 +1,35 @@
 import Image from 'next/image';
 import { ComponentProps } from 'react';
-import { Badge } from '../../../@types';
+import { Badge, BadgeStyles } from '../../../@types';
+import BadgeContainer from './BadgeContainer';
 
-type BadgeCardProps = Badge & ComponentProps<'li'>;
+type BadgeCardStyleProps = {
+  style: BadgeStyles;
+};
 
-function BadgeCard({ name, url, ...props }: BadgeCardProps) {
+type BadgeCardProps = Badge & ComponentProps<'li'> & BadgeCardStyleProps;
+
+function BadgeCard({ style, name, url, ...props }: BadgeCardProps) {
   return (
     <li className="border-secondary rounded-xl border p-4" {...props}>
-      <div className="relative h-7 min-w-[200px]">
+      <BadgeContainer style={style}>
         <Image
           objectFit="contain"
           layout="fill"
           alt={`${name} badge`}
           src={url}
         />
-      </div>
+      </BadgeContainer>
     </li>
   );
 }
 
-export function BadgeCardSkeleton() {
+export function BadgeCardSkeleton({ style }: BadgeCardStyleProps) {
   return (
     <li className="border-secondary rounded-xl border p-4">
-      <div className="relative h-7 min-w-[200px]">
+      <BadgeContainer style={style}>
         <div className="bg-secondary h-full w-full animate-pulse rounded-full" />
-      </div>
+      </BadgeContainer>
     </li>
   );
 }
