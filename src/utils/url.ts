@@ -15,7 +15,7 @@ export function urls(...args: Argument[]): string {
       const keys = Object.keys(arg);
 
       if (keys.length > 0) {
-        url += "?";
+        url += url.includes("?") ? "&" : "?";
 
         for (const key of keys) {
           if (arg[key]) {
