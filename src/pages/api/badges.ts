@@ -7,7 +7,10 @@ import { getIcons } from '../../lib/simpleIcons';
 import { urlEncode } from '../../utils/string';
 import { urls } from '../../utils/url';
 
-type Data = Badge[];
+type Data = {
+  badges: Badge[];
+  total: number;
+};
 
 type ErrorResponse = {
   message: string;
@@ -58,7 +61,10 @@ const getBadgesHandler = (
         });
       });
 
-      return res.status(200).json(badges);
+      return res.status(200).json({
+        badges: badges,
+        total: iconsList.length
+      });
     }
 
     throw new Error('Page and limit must be numbers');
