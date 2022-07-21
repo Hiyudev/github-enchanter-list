@@ -35,12 +35,12 @@ function BadgeList() {
     <InfiniteScroll
       dataLength={data.length}
       next={() => setSize(size + 1)}
-      hasMore={true}
+      hasMore={data[0].total > size * itemsQuantity}
       loader={<BadgeCardSkeletonList />}
     >
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {data.map((badges) => {
-          return badges.map((badge) => (
+        {data.map((res) => {
+          return res.badges.map((badge) => (
             <BadgeCard style={style} {...badge} key={badge.name} />
           ));
         })}
