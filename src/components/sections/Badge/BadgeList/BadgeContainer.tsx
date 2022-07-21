@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { BadgeStyles } from '../../../@types';
+import { BadgeStyles } from '../../../../@types';
 
 type BadgeContainerProps = {
   children: React.ReactNode;

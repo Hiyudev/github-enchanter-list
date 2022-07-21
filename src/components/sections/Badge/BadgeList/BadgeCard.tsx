@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { ComponentProps } from 'react';
-import { Badge, BadgeStyles } from '../../../@types';
+import { Badge, BadgeStyles } from '../../../../@types';
 import BadgeContainer from './BadgeContainer';
 
 type BadgeCardStyleProps = {

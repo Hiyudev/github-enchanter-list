@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Navbar from '../../components/common/Navbar';
 import Layout from '../../components/layout';
-import BadgeList from '../../components/sections/BadgeList';
+import BadgeContainer from '../../components/sections/Badge';
 
 const BadgesPage: NextPage = () => {
   return (
@@ -19,7 +19,7 @@ const BadgesPage: NextPage = () => {
           </p>
         </section>
 
-        <BadgeList />
+        <BadgeContainer />
       </Layout>
     </>
   );
