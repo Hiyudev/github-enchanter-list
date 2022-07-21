@@ -1,10 +1,10 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Option } from '../../../@types';
 import OptionComponent from './Option';
 
 type OptionsProps = {
   options: Option[];
-  onSelectOption: Dispatch<SetStateAction<Option>>;
+  onSelectOption: (selected: Option) => void;
 };
 
 export default function Options({ options, onSelectOption }: OptionsProps) {
