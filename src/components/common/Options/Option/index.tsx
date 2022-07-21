@@ -22,8 +22,8 @@ function OptionComponent({
         {
           'bg-primary-500 opacity-100': selected,
           'bg-secondary opacity-75': !selected,
-          'rounded-l-md': first,
-          'rounded-r-md': last,
+          'rounded-t-md md:rounded-l-md md:rounded-tr-none': first,
+          'rounded-b-md md:rounded-r-md md:rounded-bl-none': last,
         }
       )}
       {...props}
