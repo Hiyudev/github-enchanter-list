@@ -17,7 +17,7 @@ export default function Options({ options, onSelectOption }: OptionsProps) {
   }, [onSelectOption, selected]);
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-col md:flex-row">
       {options.map((option, index) => {
         function handleSelectOption() {
           selectOption(option);
