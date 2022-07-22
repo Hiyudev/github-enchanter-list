@@ -14,7 +14,7 @@ function ThemeSwitcher() {
   return (
     <button
       className="fancy-ring fancy-ring-bg flex items-center justify-center rounded-md transition-colors hover:text-primary-500 focus:text-primary-500"
-      aria-label="Theme Switcher"
+      aria-label="Switch the page theme"
       onClick={handlechangeTheme}
     >
       {currentThemeLogo}
