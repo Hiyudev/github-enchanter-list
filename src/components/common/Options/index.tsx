@@ -17,7 +17,11 @@ export default function Options({ options, onSelectOption }: OptionsProps) {
   }, [onSelectOption, selected]);
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div
+      role="toolbar"
+      aria-label="Switch badge style options"
+      className="flex flex-col md:flex-row"
+    >
       {options.map((option, index) => {
         function handleSelectOption() {
           selectOption(option);
@@ -30,6 +34,7 @@ export default function Options({ options, onSelectOption }: OptionsProps) {
             selected={option.label == selected.label}
             onClick={handleSelectOption}
             key={index}
+            aria-label={`Switch to ${option.label} badge style`}
           >
             {option.icon}
             {option.label}
