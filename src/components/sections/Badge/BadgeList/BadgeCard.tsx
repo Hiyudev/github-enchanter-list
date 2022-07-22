@@ -25,7 +25,7 @@ function BadgeCard({ style, name, url, ...props }: BadgeCardProps) {
     <li className="flex" {...props}>
       <button
         aria-label={`Copy ${name} badge`}
-        className="bg-primary border-secondary group relative flex-1 rounded-xl border p-4"
+        className="bg-primary border-secondary group relative flex-1 rounded-xl border p-4 outline-none"
         onClick={handleClick}
       >
         <div className="fancy-gradient absolute inset-0.5 -z-10 rounded-md opacity-0 blur transition-opacity group-hover:opacity-75 group-focus:opacity-75" />
