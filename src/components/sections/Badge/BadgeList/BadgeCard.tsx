@@ -10,16 +10,28 @@ type BadgeCardStyleProps = {
 type BadgeCardProps = Badge & ComponentProps<'li'> & BadgeCardStyleProps;
 
 function BadgeCard({ style, name, url, ...props }: BadgeCardProps) {
+  const handleClick = () => {
+    navigator.clipboard.writeText(url);
+  };
+
   return (
-    <li className="border-secondary rounded-xl border p-4" {...props}>
-      <BadgeContainer style={style}>
-        <Image
-          objectFit="contain"
-          layout="fill"
-          alt={`${name} badge`}
-          src={url}
-        />
-      </BadgeContainer>
+    <li className="flex" {...props}>
+      <button
+        aria-label={`Copy ${name} badge`}
+        className="bg-primary border-secondary group relative flex-1 rounded-xl border p-4"
+        onClick={handleClick}
+      >
+        <div className="fancy-gradient absolute inset-0.5 -z-10 rounded-md opacity-0 blur transition-opacity group-hover:opacity-75 group-focus:opacity-75" />
+
+        <BadgeContainer style={style}>
+          <Image
+            objectFit="contain"
+            layout="fill"
+            alt={`${name} badge`}
+            src={url}
+          />
+        </BadgeContainer>
+      </button>
     </li>
   );
 }
