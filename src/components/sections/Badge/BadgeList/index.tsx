@@ -52,7 +52,7 @@ function BadgeList() {
 
   return (
     <InfiniteScroll
-      className="mb-8"
+      className="mb-8 !overflow-visible"
       dataLength={currentBadgeLength}
       next={() => {
         setSize(size + 1);
