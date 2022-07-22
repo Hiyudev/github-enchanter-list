@@ -1,5 +1,7 @@
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { ComponentProps } from 'react';
+import { toast } from 'react-toastify';
 import { Badge, BadgeStyles } from '../../../../@types';
 import BadgeContainer from './BadgeContainer';
 
@@ -10,8 +12,13 @@ type BadgeCardStyleProps = {
 type BadgeCardProps = Badge & ComponentProps<'li'> & BadgeCardStyleProps;
 
 function BadgeCard({ style, name, url, ...props }: BadgeCardProps) {
+  const { theme } = useTheme();
   const handleClick = () => {
     navigator.clipboard.writeText(url);
+    toast(`Copied ${name} badge to your clipboard`, {
+      type: 'success',
+      theme: theme == 'light' ? 'light' : 'dark',
+    });
   };
 
   return (
