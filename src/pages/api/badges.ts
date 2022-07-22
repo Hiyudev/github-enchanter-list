@@ -52,7 +52,7 @@ const getBadgesHandler = (
         const url: string = urls(templateUrl, {
           [`style=${style}`]: hasStyle,
           [`logo=${icon.slug}`]: true,
-          [`logoColor=${logoColor}`]: true,
+          [`logoColor=${logoColor}`]: style != 'social',
         });
 
         badges.push({
