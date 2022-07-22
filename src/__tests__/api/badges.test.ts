@@ -17,7 +17,7 @@ describe("API Route: /api/icons", () => {
       const data = JSON.parse(res._getData());
 
       expect(res._getStatusCode()).toBe(200);
-      expect(data).toHaveLength(12);
+      expect(data.badges).toHaveLength(12);
     });
 
     it("should get first page with 36 items", async () => {
@@ -33,7 +33,7 @@ describe("API Route: /api/icons", () => {
       const data = JSON.parse(res._getData());
 
       expect(res._getStatusCode()).toBe(200);
-      expect(data).toHaveLength(36);
+      expect(data.badges).toHaveLength(36);
     });
 
     it("should be different between the first page and the second page", async () => {
@@ -49,7 +49,7 @@ describe("API Route: /api/icons", () => {
       const firstFetchData = JSON.parse(firstRes._getData());
 
       expect(firstRes._getStatusCode()).toBe(200);
-      expect(firstFetchData).toHaveLength(12);
+      expect(firstFetchData.badges).toHaveLength(12);
 
       const { req: secondReq, res: secondRes } = createMocks({
         method: 'GET',
@@ -63,9 +63,9 @@ describe("API Route: /api/icons", () => {
       const secondFetchData = JSON.parse(secondRes._getData());
 
       expect(secondRes._getStatusCode()).toBe(200);
-      expect(secondFetchData).toHaveLength(12);
+      expect(secondFetchData.badges).toHaveLength(12);
 
-      expect(firstFetchData).not.toEqual(secondFetchData);
+      expect(firstFetchData.badges).not.toEqual(secondFetchData.badges);
     });
   });
 
@@ -82,9 +82,9 @@ describe("API Route: /api/icons", () => {
       });
 
       await getBadgesHandler(req, res);
-      const urls: Badge[] = JSON.parse(res._getData());
+      const { badges }: { badges: Badge[] } = JSON.parse(res._getData());
 
-      const sampleBadge: Badge = urls[0];
+      const sampleBadge: Badge = badges[0];
       expect(res._getStatusCode()).toBe(200);
 
       expect(sampleBadge.name).toBe('Jest');
@@ -102,7 +102,7 @@ describe("API Route: /api/icons", () => {
       });
 
       await getBadgesHandler(req, res);
-      const badges: Badge[] = JSON.parse(res._getData());
+      const { badges }: { badges: Badge[] } = JSON.parse(res._getData());
 
       expect(res._getStatusCode()).toBe(200);
 
