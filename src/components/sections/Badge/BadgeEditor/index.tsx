@@ -1,5 +1,7 @@
 import { MagnifyingGlass } from 'phosphor-react';
+import { useEffect, useState } from 'react';
 import { BadgeStyles, Option } from '../../../../@types';
+import useDebounce from '../../../../hooks/useDebounce';
 import { useBadge } from '../../../../lib/stores/badgeStore';
 import { useEditor } from '../../../../lib/stores/editorStore';
 import { Input } from '../../../common/Input';
@@ -30,15 +32,19 @@ const styleOptions = [
 ];
 
 function BadgeEditor() {
+  const [searchinput, setSearchInput] = useState<string>('');
+  const debouncedSearchInput = useDebounce<string>(searchinput, 150);
+
   const setStyle = useBadge((state) => state.setStyle);
   const setSearch = useEditor((state) => state.setSearch);
 
   const handleSelectOption = (selected: Option) => {
     setStyle(selected.value as BadgeStyles);
   };
-  const onInputChange = (query: string) => {
-    setSearch(query);
-  };
+
+  useEffect(() => {
+    setSearch(debouncedSearchInput);
+  }, [debouncedSearchInput, setSearch]);
 
   return (
     <section className="space-y-4">
@@ -46,7 +52,7 @@ function BadgeEditor() {
 
       <Input
         icon={<MagnifyingGlass weight="bold" />}
-        onChange={(e) => onInputChange(e.target.value)}
+        onChange={(e) => setSearchInput(e.target.value)}
         placeholder="Search for badges..."
       />
     </section>
