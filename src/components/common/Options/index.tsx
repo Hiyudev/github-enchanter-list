@@ -19,7 +19,6 @@ export default function Options({ options, onSelectOption, ...props }: OptionsPr
   return (
     <div
       role="toolbar"
-      aria-label="Switch badge style options"
       className="flex flex-col md:flex-row"
       {...props}
     >

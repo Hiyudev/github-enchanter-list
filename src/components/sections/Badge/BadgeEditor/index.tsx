@@ -81,10 +81,18 @@ function BadgeEditor() {
   return (
     <section className="space-y-4">
       <p className="text-secondary">Badge styles</p>
-      <Options options={styleOptions} onSelectOption={handleSelectStyle} />
+      <Options
+        aria-label="Switch badge style options"
+        options={styleOptions}
+        onSelectOption={handleSelectStyle}
+      />
 
       <p className="text-secondary">Copy as</p>
-      <Options options={copyOptions} onSelectOption={handleSelectCopy} />
+      <Options
+        aria-label="Switch copy as options"
+        options={copyOptions}
+        onSelectOption={handleSelectCopy}
+      />
 
       <Input
         icon={<MagnifyingGlass weight="bold" />}
