@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useSWRInfinite from 'swr/infinite';
+import shallow from 'zustand/shallow';
 import { useBadge } from '../../../../lib/stores/badgeStore';
 import { useEditor } from '../../../../lib/stores/editorStore';
 import { urls } from '../../../../utils/url';
@@ -21,7 +22,10 @@ function BadgeList() {
     );
   }
   const style = useBadge((state) => state.style);
-  const search = useEditor((state) => state.search);
+  const { search, copyAs } = useEditor(
+    (state) => ({ search: state.search, copyAs: state.copyAs }),
+    shallow
+  );
 
   const getKey = (pageIndex, previousPageData) => {
     if (previousPageData && !previousPageData.badges.length) return null;
@@ -63,7 +67,12 @@ function BadgeList() {
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {data.map((res) => {
           return res.badges.map((badge) => (
-            <BadgeCard style={style} {...badge} key={badge.name} />
+            <BadgeCard
+              copyAs={copyAs}
+              style={style}
+              {...badge}
+              key={badge.name}
+            />
           ));
         })}
       </ul>

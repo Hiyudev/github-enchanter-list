@@ -2,19 +2,44 @@ import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { ComponentProps } from 'react';
 import { toast } from 'react-toastify';
-import { Badge, BadgeStyles } from '../../../../@types';
+import { Badge, BadgeStyles, CopyAsOptions } from '../../../../@types';
 import BadgeContainer from './BadgeContainer';
 
 type BadgeCardStyleProps = {
   style: BadgeStyles;
 };
 
-type BadgeCardProps = Badge & ComponentProps<'li'> & BadgeCardStyleProps;
+type BadgeCardProps = Badge &
+  ComponentProps<'li'> &
+  BadgeCardStyleProps & {
+    copyAs: CopyAsOptions;
+  };
 
-function BadgeCard({ style, name, url, ...props }: BadgeCardProps) {
+function BadgeCard({ style, copyAs, name, url, ...props }: BadgeCardProps) {
   const { theme } = useTheme();
+
+  const copyToClipboard = () => {
+    let clipbaordText = '';
+
+    switch (copyAs) {
+      case 'link':
+        clipbaordText = url;
+        break;
+      case 'html':
+        clipbaordText = `<img src="${url}" alt="${name} badge"/>`;
+        break;
+      case 'markdown':
+        clipbaordText = `![${name}](${url})`;
+        break;
+      default:
+        break;
+    }
+
+    navigator.clipboard.writeText(clipbaordText);
+  };
+
   const handleClick = () => {
-    navigator.clipboard.writeText(url);
+    copyToClipboard();
     toast(`Copied ${name} badge to your clipboard`, {
       type: 'success',
       theme: theme == 'light' ? 'light' : 'dark',
