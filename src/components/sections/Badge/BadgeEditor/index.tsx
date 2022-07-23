@@ -1,5 +1,11 @@
-import { MagnifyingGlass } from 'phosphor-react';
+import {
+  FileHtml,
+  Link,
+  MagnifyingGlass,
+  TextAlignCenter,
+} from 'phosphor-react';
 import { useEffect, useState } from 'react';
+import shallow from 'zustand/shallow';
 import { BadgeStyles, Option } from '../../../../@types';
 import useDebounce from '../../../../hooks/useDebounce';
 import { useBadge } from '../../../../lib/stores/badgeStore';
@@ -31,15 +37,41 @@ const styleOptions = [
   },
 ];
 
+const copyOptions = [
+  {
+    icon: <Link />,
+    label: 'Copy as link',
+    value: 'link',
+    defaultSelected: true,
+  },
+  {
+    icon: <FileHtml />,
+    label: 'Copy as HTML',
+    value: 'html',
+  },
+  {
+    icon: <TextAlignCenter />,
+    label: 'Copy as Markdown',
+    value: 'markdown',
+  },
+];
+
 function BadgeEditor() {
   const [searchinput, setSearchInput] = useState<string>('');
   const debouncedSearchInput = useDebounce<string>(searchinput, 150);
 
   const setStyle = useBadge((state) => state.setStyle);
-  const setSearch = useEditor((state) => state.setSearch);
+  const { setCopyAs, setSearch } = useEditor(
+    (state) => ({ setSearch: state.setSearch, setCopyAs: state.setCopyAs }),
+    shallow
+  );
 
-  const handleSelectOption = (selected: Option) => {
+  const handleSelectStyle = (selected: Option) => {
     setStyle(selected.value as BadgeStyles);
+  };
+
+  const handleSelectCopy = (selected: Option) => {
+    setCopyAs(selected.value);
   };
 
   useEffect(() => {
@@ -48,7 +80,11 @@ function BadgeEditor() {
 
   return (
     <section className="space-y-4">
-      <Options options={styleOptions} onSelectOption={handleSelectOption} />
+      <p className="text-secondary">Badge styles</p>
+      <Options options={styleOptions} onSelectOption={handleSelectStyle} />
+
+      <p className="text-secondary">Copy as</p>
+      <Options options={copyOptions} onSelectOption={handleSelectCopy} />
 
       <Input
         icon={<MagnifyingGlass weight="bold" />}

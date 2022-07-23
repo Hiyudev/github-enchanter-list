@@ -27,3 +27,4 @@ export type Option = {
 };
 
 export type BadgeStyles = 'plastic' | 'flat' | 'flat-square' | 'for-the-badge' | 'social';
+export type CopyAsOptions = 'markdown' | 'html' | 'link';
