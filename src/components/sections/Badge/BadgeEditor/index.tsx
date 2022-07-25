@@ -11,7 +11,6 @@ import shallow from 'zustand/shallow';
 import { BadgeStyles, Option } from '../../../../@types';
 import useDebounce from '../../../../hooks/useDebounce';
 import { useBadge } from '../../../../lib/stores/badgeStore';
-import { useEditor } from '../../../../lib/stores/editorStore';
 import { Input } from '../../../common/Input';
 import Options from '../../../common/Options';
 
@@ -62,13 +61,13 @@ function BadgeEditor() {
   const [searchinput, setSearchInput] = useState<string>('');
   const debouncedSearchInput = useDebounce<string>(searchinput, 150);
 
-  const setStyle = useBadge((state) => state.setStyle);
-  const { setCopyAs, setSearch, setLabel, setMessage } = useEditor(
+  const { setStyle, setCopyAs, setSearch, setLabel, setMessage } = useBadge(
     (state) => ({
       setSearch: state.setSearch,
       setCopyAs: state.setCopyAs,
       setLabel: state.setLabel,
       setMessage: state.setMessage,
+      setStyle: state.setStyle,
     }),
     shallow
   );
