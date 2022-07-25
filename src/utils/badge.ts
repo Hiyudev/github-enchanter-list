@@ -15,13 +15,15 @@ export function generateBadgeURL({ hex, label, title, style, slug }: generateBad
   let labelText: string;
 
   if (label) {
-    const encodedLabel = urlEncode(label);
+    const text = label.replaceAll("{slug}", slug);
+    const encodedLabel = urlEncode(text);
     labelText = `${encodedLabel}-`;
   } else {
     labelText = "";
   }
 
-  const messageText = urlEncode(title);
+  const message = title.replaceAll("{slug}", slug);
+  const messageText = urlEncode(message);
 
   const templateUrl = `https://img.shields.io/badge/${labelText}${messageText}-${hex}`
 

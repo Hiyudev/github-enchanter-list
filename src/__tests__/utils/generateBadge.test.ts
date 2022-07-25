@@ -25,7 +25,7 @@ describe("Testing url generation", () => {
 
     styles.map((style) => {
       const url = generateBadgeURL({
-        hex: "#000000",
+        hex: "000000",
         label: "",
         title: "test",
         style,
@@ -37,4 +37,46 @@ describe("Testing url generation", () => {
       expect(url).toContain(`style=${style}`);
     });
   })
-})
+
+  it("should generate badge with a label", () => {
+    const url = generateBadgeURL({
+      hex: "000000",
+      label: "made with",
+      title: "test",
+      style: "plastic",
+      slug: "react"
+    })
+
+    expect(url).toBeDefined();
+    expect(url).not.toContain("undefined");
+    expect(url).toContain("made%20with");
+  });
+
+  it("should generate badge with a custom message", () => {
+    const url = generateBadgeURL({
+      hex: "000000",
+      label: "",
+      title: "this {slug}",
+      style: "plastic",
+      slug: "react"
+    })
+
+    expect(url).toBeDefined();
+    expect(url).not.toContain("undefined");
+    expect(url).toContain("this%20react");
+  });
+
+  it("should generate badge with a custom label", () => {
+    const url = generateBadgeURL({
+      hex: "000000",
+      label: "test-{slug}",
+      title: "test",
+      style: "plastic",
+      slug: "react"
+    })
+
+    expect(url).toBeDefined();
+    expect(url).not.toContain("undefined");
+    expect(url).toContain("test_react");
+  });
+});
