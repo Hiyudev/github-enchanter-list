@@ -10,7 +10,7 @@ export function Input({ className, icon, ...props }: IInputProps) {
     <div className="bg-secondary fancy-ring fancy-ring-bg text-primary relative flex flex-row items-center gap-2 rounded-md p-2">
       {icon && (
         <div
-          aria-hidden={true}
+          aria-hidden
           className="pointer-events-none absolute left-2 flex h-6 w-6 shrink-0 items-center justify-center"
         >
           {icon}
