@@ -101,7 +101,7 @@ function BadgeEditor() {
         onSelectOption={handleSelectCopy}
       />
 
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-col gap-4 md:flex-row">
         <Input
           onChange={(e) => setLabel(e.target.value)}
           icon={<TextAlignLeft />}
