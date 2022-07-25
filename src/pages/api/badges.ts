@@ -18,7 +18,7 @@ const getBadgesHandler = (
   req: NextApiRequest,
   res: NextApiResponse<Data | ErrorResponse>
 ) => {
-  const { page, limit, search, label, style } = req.query;
+  const { page, limit, search, label, style, message } = req.query;
 
   const allIcons = getIcons();
   const badges: Badge[] = [];
@@ -28,6 +28,7 @@ const getBadgesHandler = (
     const queryLimit = Number(limit);
     const queryLabel = typeof label == 'string' ? label : label?.join(' ');
     const queryStyle = typeof style == 'string' ? style : style?.join(' ');
+    const queryMessage = typeof message == 'string' ? message : message?.join(' ');
 
     if (!isNaN(queryPage) && !isNaN(queryLimit)) {
       let iconsList: SimpleIcon[] = allIcons;
@@ -43,10 +44,10 @@ const getBadgesHandler = (
       requestedIcons.forEach((icon) => {
         const url = generateBadgeURL({
           hex: icon.hex,
-          title: icon.title,
           label: queryLabel,
           style: queryStyle,
-          slug: icon.slug
+          slug: icon.slug,
+          title: queryMessage?.length > 0 ? queryMessage : icon.title,
         });
 
         badges.push({

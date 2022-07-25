@@ -11,7 +11,7 @@ type generateBadgeURLProps = {
 }
 
 export function generateBadgeURL({ hex, label, title, style, slug }: generateBadgeURLProps): string {
-  const logoColor = getConstratColor(hex);
+  const logoColor = label?.length > 0 ? 'fff' : getConstratColor(hex);
   let labelText: string;
 
   if (label) {

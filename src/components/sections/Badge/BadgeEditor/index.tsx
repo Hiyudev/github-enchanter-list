@@ -3,6 +3,8 @@ import {
   Link,
   MagnifyingGlass,
   TextAlignCenter,
+  TextAlignLeft,
+  TextAlignRight,
 } from 'phosphor-react';
 import { useEffect, useState } from 'react';
 import shallow from 'zustand/shallow';
@@ -61,8 +63,13 @@ function BadgeEditor() {
   const debouncedSearchInput = useDebounce<string>(searchinput, 150);
 
   const setStyle = useBadge((state) => state.setStyle);
-  const { setCopyAs, setSearch } = useEditor(
-    (state) => ({ setSearch: state.setSearch, setCopyAs: state.setCopyAs }),
+  const { setCopyAs, setSearch, setLabel, setMessage } = useEditor(
+    (state) => ({
+      setSearch: state.setSearch,
+      setCopyAs: state.setCopyAs,
+      setLabel: state.setLabel,
+      setMessage: state.setMessage,
+    }),
     shallow
   );
 
@@ -93,6 +100,22 @@ function BadgeEditor() {
         options={copyOptions}
         onSelectOption={handleSelectCopy}
       />
+
+      <div className="flex flex-row gap-4">
+        <Input
+          onChange={(e) => setLabel(e.target.value)}
+          icon={<TextAlignLeft />}
+          placeholder="Label"
+        />
+        <Input
+          onChange={(e) => setMessage(e.target.value)}
+          icon={<TextAlignRight />}
+          placeholder="Message"
+        />
+      </div>
+      <small className="text-secondary">
+        Use <code>{'{slug}'}</code> to replace it with the brand name.
+      </small>
 
       <Input
         icon={<MagnifyingGlass weight="bold" />}

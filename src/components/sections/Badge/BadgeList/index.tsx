@@ -22,8 +22,13 @@ function BadgeList() {
     );
   }
   const style = useBadge((state) => state.style);
-  const { search, copyAs } = useEditor(
-    (state) => ({ search: state.search, copyAs: state.copyAs }),
+  const { search, copyAs, message, label } = useEditor(
+    (state) => ({
+      search: state.search,
+      copyAs: state.copyAs,
+      message: state.message,
+      label: state.label,
+    }),
     shallow
   );
 
@@ -34,6 +39,8 @@ function BadgeList() {
       `/api/badges?page=${pageIndex}&limit=${itemsQuantity}&style=${style}`,
       {
         [`search=${search}`]: search.length > 0,
+        [`message=${message}`]: message.length > 0,
+        [`label=${label}`]: label.length > 0,
       }
     );
     return apiUrl;

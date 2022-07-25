@@ -7,7 +7,7 @@ type IInputProps = ComponentProps<'input'> & {
 
 export function Input({ className, icon, ...props }: IInputProps) {
   return (
-    <div className="bg-secondary fancy-ring fancy-ring-bg text-primary relative flex flex-row items-center gap-2 rounded-md p-2">
+    <div className="bg-secondary fancy-ring fancy-ring-bg text-primary relative flex flex-1 flex-row items-center gap-2 rounded-md p-2">
       {icon && (
         <div
           aria-hidden

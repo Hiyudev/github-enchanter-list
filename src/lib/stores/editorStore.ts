@@ -5,6 +5,10 @@ interface EditorStoreState {
   setSearch: (query: string) => void;
   copyAs: string;
   setCopyAs: (option: string) => void;
+  label: string;
+  setLabel: (label: string) => void;
+  message: string;
+  setMessage: (message: string) => void;
 }
 
 export const useEditor = create<EditorStoreState>()((set) => ({
@@ -12,4 +16,8 @@ export const useEditor = create<EditorStoreState>()((set) => ({
   setSearch: (query) => set((state) => ({ search: query })),
   copyAs: '',
   setCopyAs: (option) => set((state) => ({ copyAs: option })),
+  label: '',
+  setLabel: (label) => set((state) => ({ label: label })),
+  message: '',
+  setMessage: (message) => set((state) => ({ message: message })),
 }))
