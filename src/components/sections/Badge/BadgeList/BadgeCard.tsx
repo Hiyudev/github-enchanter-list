@@ -1,5 +1,6 @@
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
+import { Copy } from 'phosphor-react';
 import { ComponentProps } from 'react';
 import { toast } from 'react-toastify';
 import { Badge, BadgeStyles, CopyAsOptions } from '../../../../@types';
@@ -56,7 +57,14 @@ function BadgeCard({ style, copyAs, name, url, ...props }: BadgeCardProps) {
         <div className="fancy-gradient absolute inset-0.5 -z-10 rounded-md opacity-0 blur transition-opacity group-hover:opacity-75 group-focus:opacity-75" />
 
         <BadgeContainer style={style}>
+          <div
+            aria-hidden
+            className="absolute z-20 hidden h-full w-full items-center justify-center group-hover:flex group-focus:flex"
+          >
+            <Copy />
+          </div>
           <Image
+            className="group-hover:opacity-25 group-focus:opacity-25"
             objectFit="contain"
             layout="fill"
             alt={`${name} badge`}
