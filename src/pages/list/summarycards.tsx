@@ -15,7 +15,7 @@ const SummaryCardsPage: NextPage = () => {
             Summary cards
           </h1>
 
-          <p className="text-secondary mt-4 max-w-[300px]">
+          <p className="text-secondary mt-4 max-w-[400px]">
             A tool to generate your github summary card for profile README made
             by <span className="sr-only">@vn7n24fzkq</span>
             <a

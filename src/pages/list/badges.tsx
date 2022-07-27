@@ -13,10 +13,9 @@ const BadgesPage: NextPage = () => {
           <h1 className="text-2xl font-black uppercase tracking-wider sm:text-3xl md:text-4xl">
             Badges
           </h1>
-          <p className="text-secondary mt-4 max-w-[300px]">
+          <p className="text-secondary mt-4 max-w-[400px]">
             Concise, consistent, and legible badges in SVG and raster format
-            made by
-            <span className="sr-only">Shields.io</span>
+            made by <span className="sr-only">Shields.io</span>
             <a
               href="https://github.com/badges"
               aria-label="Visit badge creator's github profile"
