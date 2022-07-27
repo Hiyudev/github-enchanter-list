@@ -11,6 +11,7 @@ import shallow from 'zustand/shallow';
 import { BadgeStyles, Option } from '../../../../@types';
 import useDebounce from '../../../../hooks/useDebounce';
 import { useBadge } from '../../../../lib/stores/badgeStore';
+import { useCopy } from '../../../../lib/stores/copyStore';
 import { Input } from '../../../common/Input';
 import Options from '../../../common/Options';
 
@@ -61,16 +62,17 @@ function BadgeEditor() {
   const [searchinput, setSearchInput] = useState<string>('');
   const debouncedSearchInput = useDebounce<string>(searchinput, 150);
 
-  const { setStyle, setCopyAs, setSearch, setLabel, setMessage } = useBadge(
+  const { setStyle, setSearch, setLabel, setMessage } = useBadge(
     (state) => ({
       setSearch: state.setSearch,
-      setCopyAs: state.setCopyAs,
       setLabel: state.setLabel,
       setMessage: state.setMessage,
       setStyle: state.setStyle,
     }),
     shallow
   );
+
+  const setCopyAs = useCopy((state) => state.setCopyAs);
 
   const handleSelectStyle = (selected: Option) => {
     setStyle(selected.value as BadgeStyles);

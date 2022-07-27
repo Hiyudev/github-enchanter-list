@@ -3,6 +3,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import useSWRInfinite from 'swr/infinite';
 import shallow from 'zustand/shallow';
 import { useBadge } from '../../../../lib/stores/badgeStore';
+import { useCopy } from '../../../../lib/stores/copyStore';
 import { urls } from '../../../../utils/url';
 import BadgeCard, { BadgeCardSkeleton } from './BadgeCard';
 
@@ -21,15 +22,16 @@ function BadgeList() {
     );
   }
   const style = useBadge((state) => state.style);
-  const { search, copyAs, message, label } = useBadge(
+  const { search, message, label } = useBadge(
     (state) => ({
       search: state.search,
-      copyAs: state.copyAs,
       message: state.message,
       label: state.label,
     }),
     shallow
   );
+
+  const copyAs = useCopy((state) => state.copyAs);
 
   const getKey = (pageIndex, previousPageData) => {
     if (previousPageData && !previousPageData.badges.length) return null;

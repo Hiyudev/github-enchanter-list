@@ -6,8 +6,6 @@ interface BadgeStoreState {
   setStyle: (style: BadgeStyles) => void;
   search: string;
   setSearch: (query: string) => void;
-  copyAs: string;
-  setCopyAs: (option: string) => void;
   label: string;
   setLabel: (label: string) => void;
   message: string;
@@ -23,8 +21,6 @@ export const useBadge = create<BadgeStoreState>()((set) => ({
   },
   search: '',
   setSearch: (query) => set(() => ({ search: query })),
-  copyAs: '',
-  setCopyAs: (option) => set(() => ({ copyAs: option })),
   label: '',
   setLabel: (label) => set(() => ({ label: label })),
   message: '',
