@@ -62,7 +62,7 @@ function TrophiesEditor() {
       />
 
       <div className="flex flex-col gap-4 md:flex-row md:gap-8">
-        <div className="flex flex-row items-center gap-2">
+        <div className="flex flex-row items-center justify-between gap-2">
           <p className="text-secondary">Transparent background</p>
           <Switch
             handleCheckChange={handleBackgroundOptionChange}
@@ -70,7 +70,7 @@ function TrophiesEditor() {
           />
         </div>
 
-        <div className="flex flex-row items-center gap-2">
+        <div className="flex flex-row items-center justify-between gap-2">
           <p className="text-secondary">Frame</p>
           <Switch
             handleCheckChange={handleFrameOptionChange}
@@ -79,7 +79,7 @@ function TrophiesEditor() {
         </div>
       </div>
 
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-col gap-4 md:flex-row">
         <div className="flex-1">
           <p className="text-secondary">Rows ( {rows} )</p>
           <Slider
