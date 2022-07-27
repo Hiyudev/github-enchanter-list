@@ -37,7 +37,9 @@ const SummaryCardsPage: NextPage = () => {
             aria-label="Visit summary cards github repository"
           >
             <GithubLogo aria-hidden />
-            <span>Project&apos;s github repository</span>
+            <span>
+              <code>github-profile-summary-cards</code> github repository
+            </span>
           </a>
         </section>
 

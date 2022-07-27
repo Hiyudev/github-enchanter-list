@@ -37,7 +37,9 @@ const TrophiesPage: NextPage = () => {
             aria-label="Visit trophies github repository"
           >
             <GithubLogo aria-hidden />
-            <span>Project&apos;s github repository</span>
+            <span>
+              <code>github-profile-trophy</code> repository
+            </span>
           </a>
         </section>
 
