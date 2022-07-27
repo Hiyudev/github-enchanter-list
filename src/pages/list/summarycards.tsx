@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { GithubLogo } from 'phosphor-react';
 import Navbar from '../../components/common/Navbar';
 import Layout from '../../components/layout';
-import SummaryCardsContainer from '../../components/sections/SummaryCards';
+import SummaryCardsContainer from '../../components/list/SummaryCards';
 
 const SummaryCardsPage: NextPage = () => {
   return (

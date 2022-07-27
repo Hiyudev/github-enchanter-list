@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Navbar from '../../components/common/Navbar';
 import Layout from '../../components/layout';
-import BadgeContainer from '../../components/sections/Badge';
+import BadgeContainer from '../../components/list/Badge';
 
 const BadgesPage: NextPage = () => {
   return (

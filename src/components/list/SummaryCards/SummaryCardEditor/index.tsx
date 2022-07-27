@@ -6,7 +6,7 @@ import useDebounce from '../../../../hooks/useDebounce';
 import { useSummary } from '../../../../lib/stores/summaryStore';
 import { Input } from '../../../common/Input';
 import Options from '../../../common/Options';
-import EditorCopyOptions from '../../EditorCopyOptions';
+import EditorCopyOptions from '../../../sections/EditorCopyOptions';
 
 const typeOptions = [
   {
