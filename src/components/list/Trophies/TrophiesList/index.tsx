@@ -1,38 +1,39 @@
+import classNames from 'classnames';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { Copy } from 'phosphor-react';
 import { toast } from 'react-toastify';
 import shallow from 'zustand/shallow';
-
 import { useEditor } from '../../../../lib/stores/editorStore';
-import { useSummary } from '../../../../lib/stores/summaryStore';
+import { useTrophy } from '../../../../lib/stores/trophyStore';
+import { urls } from '../../../../utils/url';
 
-const SummaryCardsTheme = [
-  'default',
-  '2077',
-  'dracula',
-  'github',
-  'github_dark',
+const TrophiesTheme = [
+  'flat',
+  'onedark',
   'gruvbox',
+  'dracula',
   'monokai',
-  'nord_bright',
-  'nord_dark',
+  'chalk',
+  'nord',
+  'alduin',
+  'darkhub',
+  'juicyfresh',
+  'buddhism',
+  'oldie',
   'radical',
-  'solarized',
-  'solarized_dark',
+  'onestar',
+  'discord',
+  'algolia',
+  'gitdimmed',
   'tokyonight',
-  'vue',
-  'zenburn',
+  'matrix',
+  'apprentice',
+  'dark_dimmed',
+  'dark_lover',
 ];
 
-function SummaryCardsList() {
-  const { url, name } = useSummary(
-    (state) => ({
-      url: state.url,
-      name: state.name,
-    }),
-    shallow
-  );
+function TrophiesList() {
   const { copyAs, githubUsername } = useEditor(
     (state) => ({
       copyAs: state.copyAs,
@@ -40,6 +41,15 @@ function SummaryCardsList() {
     }),
     shallow
   );
+  const { transparentBackground, frame, rows, columns } = useTrophy(
+    (state) => ({
+      transparentBackground: state.transparentBackground,
+      frame: state.frame,
+      rows: state.rows,
+      columns: state.columns,
+    })
+  );
+
   const { theme } = useTheme();
 
   const copyToClipboard = (url: string) => {
@@ -50,10 +60,10 @@ function SummaryCardsList() {
         clipbaordText = url;
         break;
       case 'html':
-        clipbaordText = `<img src="${url}" alt="${name} badge"/>`;
+        clipbaordText = `<img src="${url}" alt="${githubUsername} trophies"/>`;
         break;
       case 'markdown':
-        clipbaordText = `![${name}](${url})`;
+        clipbaordText = `![${githubUsername} trophies](${url})`;
         break;
       default:
         break;
@@ -73,21 +83,35 @@ function SummaryCardsList() {
   return (
     <ul className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
       {!!githubUsername &&
-        SummaryCardsTheme.map((theme, index) => {
-          const apiUrl = url
-            .replaceAll('{username}', githubUsername)
-            .replaceAll('{theme}', theme);
+        TrophiesTheme.map((theme, index) => {
+          const url = `https://github-profile-trophy.vercel.app/?username=${githubUsername}&theme=${theme}&row=${rows}&column=${columns}`;
+          const apiUrl = urls(url, {
+            'no-bg=true': transparentBackground,
+            'no-frame=true': frame,
+          });
 
           return (
             <li className="flex" key={index}>
               <button
-                aria-label={`Copy ${name} badge`}
+                aria-label={`Copy trophy badge`}
                 className="bg-primary border-secondary group relative flex-1 rounded-xl border p-4 outline-none"
                 onClick={() => handleClick(apiUrl)}
               >
                 <div className="fancy-gradient absolute inset-0.5 -z-10 rounded-md opacity-0 blur transition-opacity group-hover:opacity-75 group-focus:opacity-75" />
 
-                <div className="relative flex h-32 items-center justify-center">
+                <div
+                  className={classNames(
+                    'relative flex items-center justify-center',
+                    {
+                      'h-32': rows == 1,
+                      'h-48': rows == 2,
+                      'h-64': rows == 3,
+                      'h-72': rows == 4,
+                      'h-80': rows == 5,
+                      'h-96': rows == 6,
+                    }
+                  )}
+                >
                   <div
                     aria-hidden
                     className="absolute z-20 hidden h-full w-full items-center justify-center group-hover:flex group-focus:flex"
@@ -98,7 +122,7 @@ function SummaryCardsList() {
                     objectFit="contain"
                     layout="fill"
                     className="group-hover:opacity-25 group-focus:opacity-25"
-                    alt={`${name} badge`}
+                    alt={''}
                     src={apiUrl}
                   />
                 </div>
@@ -110,4 +134,6 @@ function SummaryCardsList() {
   );
 }
 
-export default SummaryCardsList;
+export default TrophiesList;
+
+// https://github-profile-trophy.vercel.app/?username=ryo-ma

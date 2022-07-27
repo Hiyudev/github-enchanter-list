@@ -1,5 +1,10 @@
 module.exports = {
   images: {
-    domains: ['img.shields.io', 'github-profile-summary-cards.vercel.app'],
+    dangerouslyAllowSVG: true,
+    domains: [
+      'img.shields.io',
+      'github-profile-summary-cards.vercel.app',
+      'github-profile-trophy.vercel.app',
+    ],
   },
 };

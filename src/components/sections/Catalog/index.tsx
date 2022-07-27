@@ -23,6 +23,13 @@ const ListPages: Page[] = [
     alt: 'Badge thumbnail',
     href: '/list/summarycards',
   },
+  {
+    title: 'Trophies',
+    description: 'List of dynamically generated GitHub Stat Trophies.',
+    imageURL: '/images/Thumbnail.png',
+    alt: 'Badge thumbnail',
+    href: '/list/trophies',
+  },
 ];
 
 function CatalogSection() {
