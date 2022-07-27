@@ -73,6 +73,7 @@ function SummaryCardsList() {
   return (
     <ul className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
       {!!githubUsername &&
+        url &&
         SummaryCardsTheme.map((theme, index) => {
           const apiUrl = url
             .replaceAll('{username}', githubUsername)
@@ -94,6 +95,7 @@ function SummaryCardsList() {
                   >
                     <Copy />
                   </div>
+
                   <Image
                     objectFit="contain"
                     layout="fill"
