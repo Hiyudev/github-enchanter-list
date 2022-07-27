@@ -18,9 +18,9 @@ function Slider({ min, max, defaultValue, onValueChange }: SliderProps) {
       step={1}
     >
       <RadixSlider.Track className="bg-secondary relative h-[3px] flex-1">
-        <RadixSlider.Range className="absolute h-full bg-white" />
+        <RadixSlider.Range className="inverted-bg-secondary absolute h-full" />
       </RadixSlider.Track>
-      <RadixSlider.Thumb className="block h-4 w-4 rounded-full bg-white" />
+      <RadixSlider.Thumb className="block h-4 w-4 rounded-full bg-black dark:bg-white" />
     </RadixSlider.Root>
   );
 }

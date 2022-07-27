@@ -17,6 +17,10 @@
     @apply bg-background-200 dark:bg-background-800;
   }
 
+  .inverted-bg-secondary {
+    @apply bg-background-800 dark:bg-background-200;
+  }
+
   .text-primary {
     @apply text-black dark:text-white;
   }
