@@ -11,24 +11,17 @@ export type Page = {
 const ListPages: Page[] = [
   {
     title: 'Badges',
-    description: 'List of badges to use in your readme page',
+    description: 'List of concise, consistent, and legible badges.',
     imageURL: '/images/Thumbnail.png',
     alt: 'Badge thumbnail',
     href: '/list/badges',
   },
   {
-    title: 'Badges',
-    description: 'List of badges to use in your readme page',
+    title: 'Summary cards',
+    description: 'List of summary cards for profile.',
     imageURL: '/images/Thumbnail.png',
     alt: 'Badge thumbnail',
-    href: '/list/badges',
-  },
-  {
-    title: 'Badges',
-    description: 'List of badges to use in your readme page',
-    imageURL: '/images/Thumbnail.png',
-    alt: 'Badge thumbnail',
-    href: '/list/badges',
+    href: '/list/summarycards',
   },
 ];
 
