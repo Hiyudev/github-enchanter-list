@@ -83,7 +83,7 @@ function TrophiesEditor() {
         <div className="flex-1">
           <p className="text-secondary">Rows ( {rows} )</p>
           <Slider
-            defaultValue={1}
+            defaultValue={rows}
             min={1}
             onValueChange={handleRowsChange}
             max={6}
@@ -95,7 +95,7 @@ function TrophiesEditor() {
           <Slider
             min={1}
             onValueChange={handleColumnsChange}
-            defaultValue={6}
+            defaultValue={columns}
             max={6}
           />
         </div>
