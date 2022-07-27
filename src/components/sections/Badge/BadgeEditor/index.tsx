@@ -1,19 +1,12 @@
-import {
-  FileHtml,
-  Link,
-  MagnifyingGlass,
-  TextAlignCenter,
-  TextAlignLeft,
-  TextAlignRight,
-} from 'phosphor-react';
+import { MagnifyingGlass, TextAlignLeft, TextAlignRight } from 'phosphor-react';
 import { useEffect, useState } from 'react';
 import shallow from 'zustand/shallow';
 import { BadgeStyles, Option } from '../../../../@types';
 import useDebounce from '../../../../hooks/useDebounce';
 import { useBadge } from '../../../../lib/stores/badgeStore';
-import { useCopy } from '../../../../lib/stores/copyStore';
 import { Input } from '../../../common/Input';
 import Options from '../../../common/Options';
+import EditorCopyOptions from '../../EditorCopyOptions';
 
 const styleOptions = [
   {
@@ -39,25 +32,6 @@ const styleOptions = [
   },
 ];
 
-const copyOptions = [
-  {
-    icon: <Link />,
-    label: 'Copy as link',
-    value: 'link',
-    defaultSelected: true,
-  },
-  {
-    icon: <FileHtml />,
-    label: 'Copy as HTML',
-    value: 'html',
-  },
-  {
-    icon: <TextAlignCenter />,
-    label: 'Copy as Markdown',
-    value: 'markdown',
-  },
-];
-
 function BadgeEditor() {
   const [searchinput, setSearchInput] = useState<string>('');
   const debouncedSearchInput = useDebounce<string>(searchinput, 150);
@@ -72,14 +46,8 @@ function BadgeEditor() {
     shallow
   );
 
-  const setCopyAs = useCopy((state) => state.setCopyAs);
-
   const handleSelectStyle = (selected: Option) => {
     setStyle(selected.value as BadgeStyles);
-  };
-
-  const handleSelectCopy = (selected: Option) => {
-    setCopyAs(selected.value);
   };
 
   useEffect(() => {
@@ -96,11 +64,7 @@ function BadgeEditor() {
       />
 
       <p className="text-secondary">Copy as</p>
-      <Options
-        aria-label="Switch copy as options"
-        options={copyOptions}
-        onSelectOption={handleSelectCopy}
-      />
+      <EditorCopyOptions />
 
       <div className="flex flex-col gap-4 md:flex-row">
         <Input
