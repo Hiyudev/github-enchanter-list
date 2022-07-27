@@ -4,7 +4,7 @@ import { Copy } from 'phosphor-react';
 import { toast } from 'react-toastify';
 import shallow from 'zustand/shallow';
 
-import { useCopy } from '../../../../lib/stores/copyStore';
+import { useEditor } from '../../../../lib/stores/editorStore';
 import { useSummary } from '../../../../lib/stores/summaryStore';
 
 const SummaryCardsTheme = [
@@ -26,15 +26,20 @@ const SummaryCardsTheme = [
 ];
 
 function SummaryCardsList() {
-  const { githubUsername, url, name } = useSummary(
+  const { url, name } = useSummary(
     (state) => ({
-      githubUsername: state.githubUsername,
       url: state.url,
       name: state.name,
     }),
     shallow
   );
-  const copyAs = useCopy((state) => state.copyAs);
+  const { copyAs, githubUsername } = useEditor(
+    (state) => ({
+      copyAs: state.copyAs,
+      githubUsername: state.githubUsername,
+    }),
+    shallow
+  );
   const { theme } = useTheme();
 
   const copyToClipboard = (url: string) => {

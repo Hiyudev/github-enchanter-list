@@ -1,6 +1,6 @@
 import { FileHtml, Link, TextAlignCenter } from 'phosphor-react';
 import { Option } from '../../../@types';
-import { useCopy } from '../../../lib/stores/copyStore';
+import { useEditor } from '../../../lib/stores/editorStore';
 import Options from '../../common/Options';
 
 const copyOptions = [
@@ -22,7 +22,7 @@ const copyOptions = [
   },
 ];
 function EditorCopyOptions() {
-  const setCopyAs = useCopy((state) => state.setCopyAs);
+  const setCopyAs = useEditor((state) => state.setCopyAs);
 
   const handleSelectCopy = (selected: Option) => {
     setCopyAs(selected.value);

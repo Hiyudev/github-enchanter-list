@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import shallow from 'zustand/shallow';
 import { Option } from '../../../../@types';
 import useDebounce from '../../../../hooks/useDebounce';
+import { useEditor } from '../../../../lib/stores/editorStore';
 import { useSummary } from '../../../../lib/stores/summaryStore';
 import { Input } from '../../../common/Input';
 import Options from '../../../common/Options';
@@ -40,14 +41,15 @@ const typeOptions = [
 function SummaryCardEditor() {
   const [username, setUsername] = useState('');
   const debouncedUsername = useDebounce(username, 500);
-  const { setGithubUsername, setUrl, setName } = useSummary(
+  const { setUrl, setName } = useSummary(
     (state) => ({
-      setGithubUsername: state.setGithubUsername,
       setUrl: state.setUrl,
       setName: state.setName,
     }),
     shallow
   );
+
+  const setGithubUsername = useEditor((state) => state.setGithubUsername);
 
   const handleSelectTypeOption = (selected: Option) => {
     setUrl(selected.value);

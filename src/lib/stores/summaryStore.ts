@@ -1,8 +1,6 @@
 import create from 'zustand';
 
 interface SummaryStoreState {
-  githubUsername: string;
-  setGithubUsername: (username: string) => void;
   url: string;
   setUrl: (url: string) => void;
   name: string;
@@ -10,8 +8,6 @@ interface SummaryStoreState {
 }
 
 export const useSummary = create<SummaryStoreState>()((set) => ({
-  githubUsername: '',
-  setGithubUsername: (username: string) => set(() => ({ githubUsername: username })),
   url: '',
   setUrl: (url: string) => set(() => ({ url })),
   name: '',
