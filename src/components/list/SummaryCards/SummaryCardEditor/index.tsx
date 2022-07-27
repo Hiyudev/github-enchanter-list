@@ -1,4 +1,10 @@
-import { GithubLogo } from 'phosphor-react';
+import {
+  ChartBar,
+  ChartPie,
+  GitCommit,
+  GithubLogo,
+  User,
+} from 'phosphor-react';
 import { useEffect, useState } from 'react';
 import shallow from 'zustand/shallow';
 import { Option } from '../../../../@types';
@@ -11,27 +17,32 @@ import EditorCopyOptions from '../../../sections/EditorCopyOptions';
 
 const typeOptions = [
   {
+    icon: <User />,
     label: 'Profile details',
     value:
       'http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username={username}&theme={theme}',
     defaultSelected: true,
   },
   {
+    icon: <ChartPie />,
     label: 'Top languages by repo',
     value:
       'http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username={username}&theme={theme}',
   },
   {
+    icon: <GitCommit />,
     label: 'Top languages by commit',
     value:
       'http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username={username}&theme={theme}',
   },
   {
+    icon: <ChartBar />,
     label: 'General stats',
     value:
       'http://github-profile-summary-cards.vercel.app/api/cards/stats?username={username}&theme={theme}',
   },
   {
+    icon: <ChartBar />,
     label: 'Commits per day',
     value:
       'http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username={username}&theme={theme}&utcOffset=8',
