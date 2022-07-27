@@ -14,8 +14,30 @@ const BadgesPage: NextPage = () => {
             Badges
           </h1>
           <p className="text-secondary mt-4 max-w-[300px]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt
+            Concise, consistent, and legible badges in SVG and raster format
+            made by
+            <span className="sr-only">Shields.io</span>
+            <a
+              href="https://github.com/badges"
+              aria-label="Visit badge creator's github profile"
+              target="_blank"
+              rel="noreferrer"
+              className="font-bold transition-colors hover:text-primary-500 focus:text-primary-500"
+            >
+              @Shields.io
+            </a>
+            {'\n'}
+            with the help of
+            <span className="sr-only">Simple icons</span>
+            <a
+              href="https://github.com/simple-icons"
+              aria-label="Visit simple icons creator's github profile"
+              target="_blank"
+              rel="noreferrer"
+              className="font-bold transition-colors hover:text-primary-500 focus:text-primary-500"
+            >
+              @SimpleIcons
+            </a>
           </p>
         </section>
 
