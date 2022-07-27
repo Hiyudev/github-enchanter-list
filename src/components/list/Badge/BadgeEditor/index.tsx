@@ -63,30 +63,40 @@ function BadgeEditor() {
         onSelectOption={handleSelectStyle}
       />
 
-      <p className="text-secondary">Copy as</p>
-      <EditorCopyOptions />
-
       <div className="flex flex-col gap-4 md:flex-row">
-        <Input
-          onChange={(e) => setLabel(e.target.value)}
-          icon={<TextAlignLeft />}
-          placeholder="Label"
-        />
-        <Input
-          onChange={(e) => setMessage(e.target.value)}
-          icon={<TextAlignRight />}
-          placeholder="Message"
-        />
+        <div className="flex-1 space-y-4">
+          <p className="text-secondary">Label</p>
+
+          <Input
+            onChange={(e) => setLabel(e.target.value)}
+            icon={<TextAlignLeft />}
+            placeholder="Label"
+          />
+          <small className="text-secondary">
+            Use <code>{'{slug}'}</code> to replace it with the brand name.
+          </small>
+        </div>
+        <div className="flex-1 space-y-4">
+          <p className="text-secondary">Message</p>
+          <Input
+            onChange={(e) => setMessage(e.target.value)}
+            icon={<TextAlignRight />}
+            placeholder="Message"
+          />
+          <small className="text-secondary">
+            Use <code>{'{slug}'}</code> to replace it with the brand name.
+          </small>
+        </div>
       </div>
-      <small className="text-secondary">
-        Use <code>{'{slug}'}</code> to replace it with the brand name.
-      </small>
 
       <Input
         icon={<MagnifyingGlass weight="bold" />}
         onChange={(e) => setSearchInput(e.target.value)}
         placeholder="Search for badges..."
       />
+
+      <p className="text-secondary">Copy as</p>
+      <EditorCopyOptions />
     </section>
   );
 }
