@@ -36,15 +36,18 @@ function BadgeEditor() {
   const [searchinput, setSearchInput] = useState<string>('');
   const debouncedSearchInput = useDebounce<string>(searchinput, 150);
 
-  const { setStyle, setSearch, setLabel, setMessage } = useBadge(
-    (state) => ({
-      setSearch: state.setSearch,
-      setLabel: state.setLabel,
-      setMessage: state.setMessage,
-      setStyle: state.setStyle,
-    }),
-    shallow
-  );
+  const { setStyle, setSearch, setLabel, setMessage, label, message } =
+    useBadge(
+      (state) => ({
+        setSearch: state.setSearch,
+        setLabel: state.setLabel,
+        setMessage: state.setMessage,
+        setStyle: state.setStyle,
+        label: state.label,
+        message: state.message,
+      }),
+      shallow
+    );
 
   const handleSelectStyle = (selected: Option) => {
     setStyle(selected.value as BadgeStyles);
@@ -71,6 +74,7 @@ function BadgeEditor() {
             onChange={(e) => setLabel(e.target.value)}
             icon={<TextAlignLeft />}
             placeholder="Label"
+            defaultValue={label}
           />
           <small className="text-secondary">
             Use <code>{'{slug}'}</code> to replace it with the brand name.
@@ -82,6 +86,7 @@ function BadgeEditor() {
             onChange={(e) => setMessage(e.target.value)}
             icon={<TextAlignRight />}
             placeholder="Message"
+            defaultValue={message}
           />
           <small className="text-secondary">
             Use <code>{'{slug}'}</code> to replace it with the brand name.

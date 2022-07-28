@@ -19,17 +19,22 @@ function TrophiesEditor() {
     setColumns,
     rows,
     columns,
+    transparentBackground,
+    frame,
   } = useTrophy(
     (state) => ({
       setTransparentBackground: state.setTransparentBackground,
       setFrame: state.setFrame,
       setRows: state.setRows,
       setColumns: state.setColumns,
+      transparentBackground: state.transparentBackground,
+      frame: state.frame,
       rows: state.rows,
       columns: state.columns,
     }),
     shallow
   );
+
   const setGithubUsername = useEditor((state) => state.setGithubUsername);
 
   const handleBackgroundOptionChange = (checked: boolean) => {
@@ -67,6 +72,7 @@ function TrophiesEditor() {
           <Switch
             handleCheckChange={handleBackgroundOptionChange}
             aria-label="Switch transparent background option"
+            defaultChecked={transparentBackground}
           />
         </div>
 
@@ -75,6 +81,7 @@ function TrophiesEditor() {
           <Switch
             handleCheckChange={handleFrameOptionChange}
             aria-label="Switch frame option"
+            defaultChecked={frame}
           />
         </div>
       </div>
