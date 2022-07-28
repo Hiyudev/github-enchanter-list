@@ -29,6 +29,8 @@ Most of all repository badge list was already preset with a default styling and 
 
 To solve this problem, the website I created shows all the badges in real-time with a configuration section, so users can have fast visual feedback while customizing.
 
+Using mainly the technologies Next.JS and Tailwind.css for the project, I'm incredibly thankful for all of the libraries creators I used on this project, like Zustand for storing states, RadixUI for accessible components, superjson for easy communication between client side and server side, fuzzysort to search on lists, SWR for fast fetching and infinity scrolling support along react-infinite-scroll-component.
+
 <div align="center">
 	<img src=".github/images/Mockups.png" alt="Project mockups"/>
 </div>
@@ -94,6 +96,7 @@ yarn start
 - [@Casper](https://github.com/vn7n24fzkq) - For the awesome summary cards
 - [@ryo-ma](https://github.com/ryo-ma) - For the awesome github trophies
 - [@Anurag Hazra](https://github.com/anuraghazra) - For the awesome github stat cards
+- [@Jonah Lawrence](https://github.com/DenverCoder1) - For the awesome github streak cards
 
 ## © License
 
