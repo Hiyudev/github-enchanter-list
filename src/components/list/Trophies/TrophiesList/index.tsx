@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
-import { Copy } from 'phosphor-react';
+import { Copy, GithubLogo } from 'phosphor-react';
 import { toast } from 'react-toastify';
 import shallow from 'zustand/shallow';
 import { useEditor } from '../../../../lib/stores/editorStore';
@@ -81,56 +81,65 @@ function TrophiesList() {
   };
 
   return (
-    <ul className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
-      {!!githubUsername &&
-        TrophiesTheme.map((theme, index) => {
-          const url = `https://github-profile-trophy.vercel.app/?username=${githubUsername}&theme=${theme}&row=${rows}&column=${columns}`;
-          const apiUrl = urls(url, {
-            'no-bg=true': transparentBackground,
-            'no-frame=true': frame,
-          });
+    <>
+      {!!githubUsername ? (
+        <ul className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+          {!!githubUsername &&
+            TrophiesTheme.map((theme, index) => {
+              const url = `https://github-profile-trophy.vercel.app/?username=${githubUsername}&theme=${theme}&row=${rows}&column=${columns}`;
+              const apiUrl = urls(url, {
+                'no-bg=true': transparentBackground,
+                'no-frame=true': frame,
+              });
 
-          return (
-            <li className="flex" key={index}>
-              <button
-                aria-label={`Copy trophy badge`}
-                className="bg-primary border-secondary group relative flex-1 rounded-xl border p-4 outline-none"
-                onClick={() => handleClick(apiUrl)}
-              >
-                <div className="fancy-gradient absolute inset-0.5 -z-10 rounded-md opacity-0 blur transition-opacity group-hover:opacity-75 group-focus:opacity-75" />
-
-                <div
-                  className={classNames(
-                    'relative flex items-center justify-center',
-                    {
-                      'h-32': rows == 1,
-                      'h-48': rows == 2,
-                      'h-64': rows == 3,
-                      'h-72': rows == 4,
-                      'h-80': rows == 5,
-                      'h-96': rows == 6,
-                    }
-                  )}
-                >
-                  <div
-                    aria-hidden
-                    className="absolute z-20 hidden h-full w-full items-center justify-center group-hover:flex group-focus:flex"
+              return (
+                <li className="flex" key={index}>
+                  <button
+                    aria-label={`Copy trophy badge`}
+                    className="bg-primary border-secondary group relative flex-1 rounded-xl border p-4 outline-none"
+                    onClick={() => handleClick(apiUrl)}
                   >
-                    <Copy />
-                  </div>
-                  <Image
-                    objectFit="contain"
-                    layout="fill"
-                    className="group-hover:opacity-25 group-focus:opacity-25"
-                    alt={''}
-                    src={apiUrl}
-                  />
-                </div>
-              </button>
-            </li>
-          );
-        })}
-    </ul>
+                    <div className="fancy-gradient absolute inset-0.5 -z-10 rounded-md opacity-0 blur transition-opacity group-hover:opacity-75 group-focus:opacity-75" />
+
+                    <div
+                      className={classNames(
+                        'relative flex items-center justify-center',
+                        {
+                          'h-32': rows == 1,
+                          'h-48': rows == 2,
+                          'h-64': rows == 3,
+                          'h-72': rows == 4,
+                          'h-80': rows == 5,
+                          'h-96': rows == 6,
+                        }
+                      )}
+                    >
+                      <div
+                        aria-hidden
+                        className="absolute z-20 hidden h-full w-full items-center justify-center group-hover:flex group-focus:flex"
+                      >
+                        <Copy />
+                      </div>
+                      <Image
+                        objectFit="contain"
+                        layout="fill"
+                        className="group-hover:opacity-25 group-focus:opacity-25"
+                        alt={''}
+                        src={apiUrl}
+                      />
+                    </div>
+                  </button>
+                </li>
+              );
+            })}
+        </ul>
+      ) : (
+        <div className="border-secondary flex h-72 flex-col items-center justify-center rounded-md border">
+          <GithubLogo />
+          <h2 className="text-secondary">Please insert a github username</h2>
+        </div>
+      )}
+    </>
   );
 }
 

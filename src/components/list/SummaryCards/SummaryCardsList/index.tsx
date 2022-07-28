@@ -1,6 +1,6 @@
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
-import { Copy } from 'phosphor-react';
+import { Copy, GithubLogo } from 'phosphor-react';
 import { toast } from 'react-toastify';
 import shallow from 'zustand/shallow';
 
@@ -71,44 +71,51 @@ function SummaryCardsList() {
   };
 
   return (
-    <ul className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
-      {!!githubUsername &&
-        url &&
-        SummaryCardsTheme.map((theme, index) => {
-          const apiUrl = url
-            .replaceAll('{username}', githubUsername)
-            .replaceAll('{theme}', theme);
+    <>
+      {!!githubUsername && url ? (
+        <ul className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+          {SummaryCardsTheme.map((theme, index) => {
+            const apiUrl = url
+              .replaceAll('{username}', githubUsername)
+              .replaceAll('{theme}', theme);
 
-          return (
-            <li className="flex" key={index}>
-              <button
-                aria-label={`Copy ${name} badge`}
-                className="bg-primary border-secondary group relative flex-1 rounded-xl border p-4 outline-none"
-                onClick={() => handleClick(apiUrl)}
-              >
-                <div className="fancy-gradient absolute inset-0.5 -z-10 rounded-md opacity-0 blur transition-opacity group-hover:opacity-75 group-focus:opacity-75" />
+            return (
+              <li className="flex" key={index}>
+                <button
+                  aria-label={`Copy ${name} badge`}
+                  className="bg-primary border-secondary group relative flex-1 rounded-xl border p-4 outline-none"
+                  onClick={() => handleClick(apiUrl)}
+                >
+                  <div className="fancy-gradient absolute inset-0.5 -z-10 rounded-md opacity-0 blur transition-opacity group-hover:opacity-75 group-focus:opacity-75" />
 
-                <div className="relative flex h-32 items-center justify-center">
-                  <div
-                    aria-hidden
-                    className="absolute z-20 hidden h-full w-full items-center justify-center group-hover:flex group-focus:flex"
-                  >
-                    <Copy />
+                  <div className="relative flex h-32 items-center justify-center">
+                    <div
+                      aria-hidden
+                      className="absolute z-20 hidden h-full w-full items-center justify-center group-hover:flex group-focus:flex"
+                    >
+                      <Copy />
+                    </div>
+
+                    <Image
+                      objectFit="contain"
+                      layout="fill"
+                      className="group-hover:opacity-25 group-focus:opacity-25"
+                      alt={`${name} badge`}
+                      src={apiUrl}
+                    />
                   </div>
-
-                  <Image
-                    objectFit="contain"
-                    layout="fill"
-                    className="group-hover:opacity-25 group-focus:opacity-25"
-                    alt={`${name} badge`}
-                    src={apiUrl}
-                  />
-                </div>
-              </button>
-            </li>
-          );
-        })}
-    </ul>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <div className="border-secondary flex h-72 flex-col items-center justify-center rounded-md border">
+          <GithubLogo />
+          <h2 className="text-secondary">Please insert a github username</h2>
+        </div>
+      )}
+    </>
   );
 }
 
