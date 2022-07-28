@@ -6,6 +6,7 @@ module.exports = {
       'github-profile-summary-cards.vercel.app',
       'github-profile-trophy.vercel.app',
       'github-readme-stats.vercel.app',
+      'github-readme-streak-stats.herokuapp.com',
     ],
   },
 };
