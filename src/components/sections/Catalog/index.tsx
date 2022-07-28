@@ -21,6 +21,12 @@ export const ListPages: Page[] = [
     icon: <Trophy />,
     href: '/list/trophies',
   },
+  {
+    title: 'Stats',
+    description: 'Dynamically generated stats for your github readmes.',
+    icon: <ChartBar />,
+    href: '/list/stats',
+  },
 ];
 
 function CatalogSection() {
