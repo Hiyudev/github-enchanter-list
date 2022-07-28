@@ -1,4 +1,5 @@
 import { NextPage } from 'next/types';
+import Footer from '../components/common/Footer';
 import Navbar from '../components/common/Navbar';
 import Layout from '../components/layout';
 import CatalogSection from '../components/sections/Catalog';
@@ -33,6 +34,8 @@ const HomePage: NextPage = () => {
 
         <CatalogSection />
       </Layout>
+
+      <Footer />
     </>
   );
 };

@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { GithubLogo } from 'phosphor-react';
+import Footer from '../../components/common/Footer';
 import Navbar from '../../components/common/Navbar';
 import Layout from '../../components/layout';
 import BadgeContainer from '../../components/list/Badge';
@@ -74,6 +75,8 @@ const BadgesPage: NextPage = () => {
 
         <BadgeContainer />
       </Layout>
+
+      <Footer />
     </>
   );
 };

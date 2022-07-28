@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { GithubLogo } from 'phosphor-react';
+import Footer from '../../components/common/Footer';
 import Navbar from '../../components/common/Navbar';
 import Layout from '../../components/layout';
 import StreakContainer from '../../components/list/Streak';
@@ -46,6 +47,8 @@ const StreakCardsPage: NextPage = () => {
 
         <StreakContainer />
       </Layout>
+
+      <Footer/>
     </>
   );
 };

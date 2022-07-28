@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { GithubLogo } from 'phosphor-react';
+import Footer from '../../components/common/Footer';
 import Navbar from '../../components/common/Navbar';
 import Layout from '../../components/layout';
 import SummaryCardsContainer from '../../components/list/SummaryCards';
@@ -45,6 +46,8 @@ const SummaryCardsPage: NextPage = () => {
 
         <SummaryCardsContainer />
       </Layout>
+
+      <Footer/>
     </>
   );
 };
