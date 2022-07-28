@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Code, Heart } from 'phosphor-react';
+import { Code, GithubLogo, Heart } from 'phosphor-react';
 import LogoIcon from '../../icons/Logo';
 
 function Footer() {
@@ -46,6 +46,12 @@ function Footer() {
         <p className="text-secondary flex justify-center text-sm leading-relaxed">
           2022 Kevin
         </p>
+
+        <Link passHref href="https://github.com/Hiyudev/github-enchanter-list">
+          <a className="bg-secondary fancy-ring fancy-ring-bg-secondary mx-auto flex h-12 w-12 items-center justify-center rounded-md transition-colors hover:text-primary-500 focus:text-primary-500">
+            <GithubLogo size={24} weight="fill" />
+          </a>
+        </Link>
       </div>
     </footer>
   );
