@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import LogoIcon from '../../icons/Logo';
+import { ListPages } from '../../sections/Catalog';
 import ThemeSwitcher from './ThemeSwitcher';
 
 function Navbar() {
@@ -13,6 +14,20 @@ function Navbar() {
           <LogoIcon size={24} />
         </a>
       </Link>
+
+      <ul className="flex flex-row gap-8">
+        {ListPages.map((page, index) => (
+          <Link key={index} href={page.href} passHref>
+            <a
+              aria-label={`Visit ${page.title} page`}
+              className="fancy-ring fancy-ring-bg flex items-center justify-center gap-2 rounded-md transition-colors hover:text-primary-500 focus:text-primary-500"
+            >
+              {page.icon}
+              <span className="hidden md:block">{page.title}</span>
+            </a>
+          </Link>
+        ))}
+      </ul>
 
       <div>
         <ThemeSwitcher />

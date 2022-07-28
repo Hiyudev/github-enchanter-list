@@ -1,33 +1,24 @@
+import { ChartBar, FlagBanner, Trophy } from 'phosphor-react';
+import { Page } from '../../../@types';
 import CatalogItem from './CatalogItem';
 
-export type Page = {
-  title: string;
-  description: string;
-  imageURL: string;
-  href: string;
-  alt: string;
-};
-
-const ListPages: Page[] = [
+export const ListPages: Page[] = [
   {
     title: 'Badges',
     description: 'List of concise, consistent, and legible badges.',
-    imageURL: '/images/Thumbnail.png',
-    alt: 'Badge thumbnail',
+    icon: <FlagBanner />,
     href: '/list/badges',
   },
   {
     title: 'Summary cards',
     description: 'List of summary cards for profile.',
-    imageURL: '/images/Thumbnail.png',
-    alt: 'Badge thumbnail',
+    icon: <ChartBar />,
     href: '/list/summarycards',
   },
   {
     title: 'Trophies',
     description: 'List of dynamically generated GitHub Stat Trophies.',
-    imageURL: '/images/Thumbnail.png',
-    alt: 'Badge thumbnail',
+    icon: <Trophy />,
     href: '/list/trophies',
   },
 ];
