@@ -3,15 +3,17 @@ import { urlEncode } from "./string";
 import { urls } from "./url";
 
 type generateBadgeURLProps = {
-  hex: string;
+  labelhex: string;
   label?: string;
   title?: string;
   style: string;
   slug: string;
+  titlehex?: string;
+  custom?: boolean;
 }
 
-export function generateBadgeURL({ hex, label, title, style, slug }: generateBadgeURLProps): string {
-  const logoColor = label?.length > 0 ? 'fff' : getConstratColor(hex);
+export function generateBadgeURL({ labelhex, label, title, style, slug, titlehex, custom = false }: generateBadgeURLProps): string {
+  const logoColor = label?.length > 0 ? 'fff' : getConstratColor(labelhex);
   let labelText: string;
 
   if (label) {
@@ -25,12 +27,15 @@ export function generateBadgeURL({ hex, label, title, style, slug }: generateBad
   const message = title.replaceAll("{slug}", slug);
   const messageText = urlEncode(message);
 
-  const templateUrl = `https://img.shields.io/badge/${labelText}${messageText}-${hex}`
+  let baseUrl = custom ? "https://custom-icon-badges.herokuapp.com" : "https://img.shields.io";
+
+  const templateUrl = `${baseUrl}/badge/${labelText}${messageText}-${titlehex}`
 
   const url: string = urls(templateUrl, {
     [`style=${style}`]: true,
     [`logo=${slug}`]: true,
     [`logoColor=${logoColor}`]: style != 'social',
+    [`labelColor=${labelhex}`]: label?.length > 0 && labelhex.length > 0,
   });
 
   return url;

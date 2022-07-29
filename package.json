@@ -9,6 +9,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "@primer/octicons": "^17.4.0",
+    "@radix-ui/react-popover": "^1.0.0",
     "@radix-ui/react-slider": "^1.0.0",
     "@radix-ui/react-switch": "^1.0.0",
     "babel-plugin-superjson-next": "^0.4.3",
@@ -19,6 +21,7 @@
     "next-themes": "^0.2.0",
     "phosphor-react": "^1.4.1",
     "react": "^17.0.2",
+    "react-color-palette": "^6.2.0",
     "react-dom": "^17.0.2",
     "react-infinite-scroll-component": "^6.1.0",
     "react-toastify": "^9.0.7",

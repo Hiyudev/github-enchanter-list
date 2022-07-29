@@ -96,7 +96,7 @@ yarn start
 - [@Casper](https://github.com/vn7n24fzkq) - For the awesome summary cards
 - [@ryo-ma](https://github.com/ryo-ma) - For the awesome github trophies
 - [@Anurag Hazra](https://github.com/anuraghazra) - For the awesome github stat cards
-- [@Jonah Lawrence](https://github.com/DenverCoder1) - For the awesome github streak cards
+- [@Jonah Lawrence](https://github.com/DenverCoder1) - For the awesome github streak cards and custom icon badges
 
 ## © License
 

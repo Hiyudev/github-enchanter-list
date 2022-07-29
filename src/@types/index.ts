@@ -14,6 +14,11 @@ export interface SimpleIcon {
   | undefined;
 }
 
+export interface Octicon {
+  slug: string;
+  keywords: string[];
+}
+
 export type Badge = {
   url: string;
   name: string;
@@ -35,3 +40,8 @@ export type Page = {
   icon?: React.ReactNode;
   href: string;
 };
+
+export type IconsList = {
+  listName: string;
+  icons: SimpleIcon[] | Octicon[];
+}

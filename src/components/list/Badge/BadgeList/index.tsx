@@ -8,7 +8,7 @@ import { urls } from '../../../../utils/url';
 import BadgeCard, { BadgeCardSkeleton } from './BadgeCard';
 
 function BadgeList() {
-  const itemsQuantity = 36;
+  const itemsQuantity = 24;
 
   function BadgeCardSkeletonList() {
     return (
@@ -22,11 +22,25 @@ function BadgeList() {
     );
   }
   const style = useBadge((state) => state.style);
-  const { search, message, label } = useBadge(
+  const {
+    search,
+    message,
+    label,
+    custom,
+    useLabelColor,
+    useMessageColor,
+    labelColor,
+    messageColor,
+  } = useBadge(
     (state) => ({
       search: state.search,
       message: state.message,
       label: state.label,
+      custom: state.custom,
+      useLabelColor: state.useLabelColor,
+      useMessageColor: state.useMessageColor,
+      labelColor: state.labelColor,
+      messageColor: state.messageColor,
     }),
     shallow
   );
@@ -42,6 +56,9 @@ function BadgeList() {
         [`search=${search}`]: search.length > 0,
         [`message=${message}`]: message.length > 0,
         [`label=${label}`]: label.length > 0,
+        ['custom=true']: custom,
+        [`labelColor=${labelColor.replace('#', '')}`]: useLabelColor,
+        [`messageColor=${messageColor.replace('#', '')}`]: useMessageColor,
       }
     );
     return apiUrl;

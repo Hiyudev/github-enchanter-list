@@ -39,6 +39,18 @@ const BadgesPage: NextPage = () => {
             >
               @SimpleIcons
             </a>
+            <br />
+            Also thanks to <span className="sr-only">Jonah Lawrence</span>
+            <a
+              href="https://github.com/DenverCoder1"
+              aria-label="Visit custom icons badge creator's github profile"
+              target="_blank"
+              rel="noreferrer"
+              className="font-bold transition-colors hover:text-primary-500 focus:text-primary-500"
+            >
+              @Jonah Lawrence
+            </a>{' '}
+            for making custom icons badge.
           </p>
 
           <ul>
@@ -67,6 +79,20 @@ const BadgesPage: NextPage = () => {
                 <GithubLogo aria-hidden />
                 <span>
                   <code>simple-icons</code> repository
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/DenverCoder1/custom-icon-badges"
+                target="_blank"
+                className="inline-flex flex-row items-center justify-center gap-2 transition-colors hover:text-primary-500 focus:text-primary-500"
+                rel="noreferrer"
+                aria-label="Visit custom icon badges github repository"
+              >
+                <GithubLogo aria-hidden />
+                <span>
+                  <code>custom-icon-badges</code> repository
                 </span>
               </a>
             </li>

@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import { ToastContainer } from 'react-toastify';
 import SEO from '../../next-seo.config';
 
+import 'react-color-palette/lib/css/styles.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 import '../styles/global.css';
 
