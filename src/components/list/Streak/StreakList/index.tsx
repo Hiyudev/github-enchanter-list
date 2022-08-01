@@ -159,6 +159,7 @@ function StreakList() {
                     </div>
 
                     <Image
+                      unoptimized
                       objectFit="contain"
                       layout="fill"
                       className="group-hover:opacity-25 group-focus:opacity-25"

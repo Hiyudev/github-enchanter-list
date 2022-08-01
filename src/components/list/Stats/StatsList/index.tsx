@@ -168,6 +168,7 @@ function StatsList() {
                 </div>
 
                 <Image
+                  unoptimized
                   objectFit="contain"
                   layout="fill"
                   className="group-hover:opacity-25 group-focus:opacity-25"

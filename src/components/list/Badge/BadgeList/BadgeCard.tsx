@@ -64,6 +64,7 @@ function BadgeCard({ style, copyAs, name, url, ...props }: BadgeCardProps) {
             <Copy />
           </div>
           <Image
+            unoptimized
             className="group-hover:opacity-25 group-focus:opacity-25"
             objectFit="contain"
             layout="fill"
